@@ -2,8 +2,9 @@ import Header from '@/components/Header';
 import Hero from '@/components/sections/Hero';
 import Services from '@/components/sections/Services';
 import AboutTeam from '@/components/sections/AboutTeam';
-import FinalCTA from '@/components/sections/FinalCTA';
 import Contact from '@/components/sections/Contact';
+import WhyChooseUs from '@/components/sections/WhyChooseUs';
+import FinalCTA from '@/components/sections/FinalCTA';
 import Footer from '@/components/Footer';
 import FloatingShapes from '@/components/FloatingShapes';
 import ErrorBoundary from '@/components/ErrorBoundary';
@@ -27,7 +28,9 @@ export default function Home() {
           <main className="relative z-10">
             <Hero />
             <Services />
+            <WhyChooseUs />
             <AboutTeam />
+            <FinalCTA />
             <Contact />
           </main>
           <Footer />
