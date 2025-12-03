@@ -11,7 +11,10 @@ function HologramEffect() {
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.5;
-      meshRef.current.material.opacity = 0.3 + Math.sin(state.clock.elapsedTime * 2) * 0.2;
+      const material = meshRef.current.material as THREE.MeshBasicMaterial;
+      if (material) {
+        material.opacity = 0.3 + Math.sin(state.clock.elapsedTime * 2) * 0.2;
+      }
     }
   });
 
@@ -44,7 +47,7 @@ function FloatingData() {
           key={i}
           position={[
             Math.cos((i / 6) * Math.PI * 2) * 1.5,
-            Math.sin(state.clock?.elapsedTime + i) * 0.5,
+            0,
             Math.sin((i / 6) * Math.PI * 2) * 1.5
           ]}
           fontSize={0.2}

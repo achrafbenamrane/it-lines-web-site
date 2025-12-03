@@ -71,7 +71,10 @@ function DataStream() {
   useFrame((state) => {
     if (linesRef.current) {
       linesRef.current.rotation.z = scrollYProgress.get() * Math.PI;
-      linesRef.current.material.opacity = 0.3 + Math.sin(state.clock.elapsedTime) * 0.2;
+      const material = linesRef.current.material as THREE.LineBasicMaterial;
+      if (material) {
+        material.opacity = 0.3 + Math.sin(state.clock.elapsedTime) * 0.2;
+      }
     }
   });
 

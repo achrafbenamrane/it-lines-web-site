@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const inter = Inter({
@@ -19,22 +19,15 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "IT Lines - Digital Solutions & IT Consultancy",
-  description: "Connecting your business to digital success. Expert IT consulting, web development, cloud solutions, and cybersecurity services that draw the path to growth.",
-  keywords: ["IT Lines", "IT consultancy", "web development", "digital solutions", "cloud services", "cybersecurity", "software development", "business connectivity"],
-  authors: [{ name: "IT Lines" }],
-  openGraph: {
-    title: "IT Lines - Digital Solutions & IT Consultancy",
-    description: "Drawing the lines to your digital success with cutting-edge technology solutions",
-    type: "website",
-  },
+  title: 'IT Lines - IT Services & Consulting',
+  description: 'Professional IT solutions and consulting services',
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" className="scroll-smooth">
       <body

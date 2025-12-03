@@ -18,7 +18,10 @@ function TimelineNode({ position, isActive, step, title }: any) {
       }
     }
     if (glowRef.current && isActive) {
-      glowRef.current.material.opacity = 0.3 + Math.sin(state.clock.elapsedTime * 2) * 0.2;
+      const material = glowRef.current.material as THREE.MeshBasicMaterial;
+      if (material) {
+        material.opacity = 0.3 + Math.sin(state.clock.elapsedTime * 2) * 0.2;
+      }
     }
   });
 
@@ -73,22 +76,23 @@ function ConnectingLine({ start, end, isActive }: any) {
   
   useFrame((state) => {
     if (lineRef.current && isActive) {
-      lineRef.current.material.opacity = 0.5 + Math.sin(state.clock.elapsedTime * 2) * 0.3;
+      const material = lineRef.current.material as THREE.LineBasicMaterial;
+      if (material) {
+        material.opacity = 0.5 + Math.sin(state.clock.elapsedTime * 2) * 0.3;
+      }
     }
   });
 
   const points = [new THREE.Vector3(...start), new THREE.Vector3(...end)];
   const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
-  return (
-    <line ref={lineRef} geometry={geometry}>
-      <lineBasicMaterial 
-        color={isActive ? "#00ff88" : "#444444"} 
-        transparent 
-        opacity={isActive ? 0.8 : 0.3}
-      />
-    </line>
-  );
+  const line = new THREE.Line(geometry, new THREE.LineBasicMaterial({
+    color: isActive ? 0x00ff88 : 0x444444,
+    transparent: true,
+    opacity: isActive ? 0.8 : 0.3
+  }));
+
+  return <primitive ref={lineRef} object={line} />;
 }
 
 interface Timeline3DProps {

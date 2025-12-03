@@ -11,9 +11,12 @@ function ServerUnit({ position, color }: { position: [number, number, number]; c
   useFrame((state) => {
     if (meshRef.current) {
       const time = state.clock.elapsedTime;
-      meshRef.current.material.emissive.setHex(
-        Math.sin(time + position[1]) > 0.5 ? 0x001100 : 0x000000
-      );
+      const material = meshRef.current.material as THREE.MeshStandardMaterial;
+      if (material && material.emissive) {
+        material.emissive.setHex(
+          Math.sin(time + position[1]) > 0.5 ? 0x001100 : 0x000000
+        );
+      }
     }
   });
 
@@ -54,7 +57,10 @@ function CircuitBoard() {
 
   useFrame((state) => {
     if (linesRef.current) {
-      linesRef.current.material.opacity = 0.3 + Math.sin(state.clock.elapsedTime) * 0.2;
+      const material = linesRef.current.material as THREE.LineBasicMaterial;
+      if (material) {
+        material.opacity = 0.3 + Math.sin(state.clock.elapsedTime) * 0.2;
+      }
     }
   });
 

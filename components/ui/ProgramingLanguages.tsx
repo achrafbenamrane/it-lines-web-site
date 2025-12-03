@@ -109,9 +109,20 @@ const skillsConfig: SkillConfig[] = [
 // --- Memoized Orbiting Skill Component ---
 const OrbitingSkill = memo(({ config, angle }: OrbitingSkillProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { orbitRadius, size, iconType, label } = config;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const x = Math.cos(angle) * orbitRadius;
   const y = Math.sin(angle) * orbitRadius;
+
+  // Don't render until mounted to avoid hydration mismatch
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div
@@ -164,9 +175,15 @@ GlowingOrbitPath.displayName = 'GlowingOrbitPath';
 export default function ProgramingLanguages() {
   const [time, setTime] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (isPaused) return;
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused || !mounted) return;
+    
     let animationFrameId: number;
     let lastTime = performance.now();
 
@@ -179,12 +196,23 @@ export default function ProgramingLanguages() {
 
     animationFrameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused]);
+  }, [isPaused, mounted]);
 
   const orbitConfigs: Array<{ radius: number; glowColor: GlowColor; delay: number }> = [
     { radius: 100, glowColor: 'cyan', delay: 0 },
     { radius: 180, glowColor: 'purple', delay: 1.5 }
   ];
+
+  // Don't render until mounted
+  if (!mounted) {
+    return (
+      <div className="w-full h-full flex items-center justify-center overflow-hidden">
+        <div className="relative w-full h-full max-w-[450px] max-h-[450px] flex items-center justify-center">
+          {/* Placeholder */}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-full flex items-center justify-center overflow-hidden">

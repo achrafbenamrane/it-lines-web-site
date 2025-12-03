@@ -26,61 +26,67 @@ const Services = () => {
       icon: Code,
       title: 'Web Development',
       description: 'Custom web applications built with modern technologies and best practices for optimal performance.',
-      fullDescription: 'We create responsive, fast, and scalable web applications using cutting-edge technologies like React, Next.js, and Node.js. Our solutions are tailored to meet your specific business needs while ensuring optimal performance and user experience.',
+      fullDescription: 'We create responsive, fast, and scalable web applications using cutting-edge technologies like React, Next.js, and Node.js.',
       features: ['Responsive Design', 'SEO Optimized', 'Fast Performance', 'Scalable Architecture'],
-      color: 'blue',
-      lightBg: 'from-blue-50 to-blue-100',
-      gradient: 'from-blue-500 to-blue-700',
+      bgColor: 'bg-blue-600',
+      iconBg: 'bg-blue-50',
+      iconColor: 'text-blue-600',
+      iconHoverBg: 'group-hover:bg-blue-600',
     },
     {
       icon: Smartphone,
       title: 'Mobile Apps',
       description: 'Native and cross-platform mobile applications that deliver seamless user experiences.',
-      fullDescription: 'Build powerful mobile applications for iOS and Android using React Native or native technologies. We focus on creating intuitive interfaces and smooth performance that keeps users engaged.',
+      fullDescription: 'Build powerful mobile applications for iOS and Android using React Native or native technologies.',
       features: ['iOS & Android', 'Cross-platform', 'Native Performance', 'Push Notifications'],
-      color: 'purple',
-      lightBg: 'from-purple-50 to-purple-100',
-      gradient: 'from-purple-500 to-purple-700',
+      bgColor: 'bg-purple-600',
+      iconBg: 'bg-purple-50',
+      iconColor: 'text-purple-600',
+      iconHoverBg: 'group-hover:bg-purple-600',
     },
     {
       icon: Cloud,
       title: 'Cloud Solutions',
       description: 'Scalable cloud infrastructure and migration services to power your digital transformation.',
-      fullDescription: 'Leverage the power of cloud computing with AWS, Azure, or Google Cloud. We handle everything from infrastructure setup to migration, ensuring your applications run smoothly and cost-effectively.',
+      fullDescription: 'Leverage the power of cloud computing with AWS, Azure, or Google Cloud.',
       features: ['AWS/Azure/GCP', 'Auto-scaling', 'Cost Optimization', 'High Availability'],
-      color: 'cyan',
-      lightBg: 'from-cyan-50 to-cyan-100',
-      gradient: 'from-cyan-500 to-cyan-700',
+      bgColor: 'bg-cyan-600',
+      iconBg: 'bg-cyan-50',
+      iconColor: 'text-cyan-600',
+      iconHoverBg: 'group-hover:bg-cyan-600',
     },
     {
       icon: Shield,
       title: 'Cybersecurity',
       description: 'Comprehensive security solutions to protect your business from digital threats.',
-      fullDescription: 'Protect your digital assets with enterprise-grade security solutions. From penetration testing to compliance management, we ensure your systems are secure and your data is protected.',
+      fullDescription: 'Protect your digital assets with enterprise-grade security solutions.',
       features: ['Threat Detection', 'Compliance', 'Data Encryption', 'Security Audits'],
-      color: 'red',
-      lightBg: 'from-red-50 to-red-100',
-      gradient: 'from-red-500 to-red-700',
+      bgColor: 'bg-red-600',
+      iconBg: 'bg-red-50',
+      iconColor: 'text-red-600',
+      iconHoverBg: 'group-hover:bg-red-600',
     },
     {
       icon: Zap,
       title: 'API Development',
       description: 'Robust and scalable APIs that connect your services and enable seamless integrations.',
-      fullDescription: 'Design and build RESTful and GraphQL APIs that power your applications. We create well-documented, secure, and performant APIs that integrate seamlessly with your existing systems.',
+      fullDescription: 'Design and build RESTful and GraphQL APIs that power your applications.',
       features: ['RESTful APIs', 'GraphQL', 'API Documentation', 'Rate Limiting'],
-      color: 'yellow',
-      lightBg: 'from-yellow-50 to-yellow-100',
-      gradient: 'from-yellow-500 to-yellow-700',
+      bgColor: 'bg-yellow-600',
+      iconBg: 'bg-yellow-50',
+      iconColor: 'text-yellow-600',
+      iconHoverBg: 'group-hover:bg-yellow-600',
     },
     {
       icon: Users,
       title: 'IT Consulting',
       description: 'Strategic technology consulting to help you make informed decisions and drive growth.',
-      fullDescription: 'Get expert guidance on technology strategy, architecture design, and digital transformation. We help you navigate complex technical decisions and chart the best path forward for your business.',
+      fullDescription: 'Get expert guidance on technology strategy, architecture design, and digital transformation.',
       features: ['Tech Strategy', 'Architecture Design', 'Team Training', 'Code Review'],
-      color: 'green',
-      lightBg: 'from-green-50 to-green-100',
-      gradient: 'from-green-500 to-green-700',
+      bgColor: 'bg-green-600',
+      iconBg: 'bg-green-50',
+      iconColor: 'text-green-600',
+      iconHoverBg: 'group-hover:bg-green-600',
     },
   ];
 
@@ -95,19 +101,10 @@ const Services = () => {
     }
   }, [isUserHovering, services.length]);
 
-  const colorClasses = {
-    blue: 'bg-blue-50 text-blue-600 group-hover:bg-blue-600',
-    purple: 'bg-purple-50 text-purple-600 group-hover:bg-purple-600',
-    cyan: 'bg-cyan-50 text-cyan-600 group-hover:bg-cyan-600',
-    red: 'bg-red-50 text-red-600 group-hover:bg-red-600',
-    yellow: 'bg-yellow-50 text-yellow-600 group-hover:bg-yellow-600',
-    green: 'bg-green-50 text-green-600 group-hover:bg-green-600',
-  };
-
   return (
     <section
       id="services"
-      className="py-20 lg:py-32 bg-gray-50 relative overflow-hidden"
+      className="min-h-screen py-20 lg:py-32 bg-white relative overflow-hidden flex items-center"
       ref={sectionRef}
     >
       {/* Background decoration */}
@@ -130,18 +127,17 @@ const Services = () => {
             Our Services
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Solutions That Drive{' '}
-            <span className="text-blue-600">Results</span>
+            Solutions That Drive <span className="text-blue-600">Results</span>
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            We offer comprehensive IT services tailored to your business needs, from development to deployment and beyond.
+            We offer comprehensive IT services tailored to your business needs.
           </p>
         </motion.div>
 
         {/* Services Grid with Description Panel */}
         <div className="relative">
           <div className="grid lg:grid-cols-12 gap-8">
-            {/* Services Grid - 8 columns, 3 cards per row */}
+            {/* Services Grid */}
             <motion.div
               style={{ y: yGrid }}
               className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6"
@@ -170,20 +166,16 @@ const Services = () => {
                   }}
                 >
                   <motion.div
-                    animate={{
-                      scale: hoveredIndex === index ? 1.05 : 1,
-                    }}
+                    animate={{ scale: hoveredIndex === index ? 1.05 : 1 }}
                     transition={{ duration: 0.3 }}
                     className="bg-white rounded-2xl p-6 h-full border border-gray-200 hover:border-gray-300 hover:shadow-xl transition-all duration-300"
                   >
-                    <div className={`w-12 h-12 rounded-xl ${colorClasses[service.color as keyof typeof colorClasses]} flex items-center justify-center mb-4 transition-colors duration-300 group-hover:text-white`}>
+                    <div className={`w-12 h-12 rounded-xl ${service.iconBg} ${service.iconColor} ${service.iconHoverBg} flex items-center justify-center mb-4 transition-colors duration-300 group-hover:text-white`}>
                       <service.icon className="w-6 h-6" />
                     </div>
-                    
                     <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                       {service.title}
                     </h3>
-                    
                     <p className="text-gray-600 text-sm leading-relaxed">
                       {service.description}
                     </p>
@@ -192,7 +184,7 @@ const Services = () => {
               ))}
             </motion.div>
 
-            {/* Description Panel - 4 columns, Fixed Position */}
+            {/* Description Panel */}
             <div className="lg:col-span-4 hidden lg:block">
               <div className="sticky top-32">
                 <AnimatePresence mode="wait">
@@ -202,13 +194,13 @@ const Services = () => {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.3 }}
-                    className={`bg-gradient-to-br ${services[selectedService].gradient} rounded-2xl p-8 shadow-2xl text-white`}
+                    className={`${services[selectedService].bgColor} rounded-2xl p-8 shadow-2xl text-white`}
                   >
                     <div className="flex items-center justify-between mb-6">
-                      <div className={`w-14 h-14 bg-gradient-to-br ${services[selectedService].lightBg} rounded-xl flex items-center justify-center`}>
+                      <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
                         {(() => {
                           const ServiceIcon = services[selectedService].icon;
-                          return <ServiceIcon className={`w-7 h-7 text-${services[selectedService].color}-600`} />;
+                          return <ServiceIcon className="w-7 h-7 text-white" />;
                         })()}
                       </div>
                     </div>
@@ -241,7 +233,6 @@ const Services = () => {
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </a>
 
-                    {/* Progress indicators */}
                     <div className="flex space-x-2 mt-6 justify-center">
                       {services.map((_, idx) => (
                         <div
