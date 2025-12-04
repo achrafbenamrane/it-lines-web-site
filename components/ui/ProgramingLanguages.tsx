@@ -109,20 +109,10 @@ const skillsConfig: SkillConfig[] = [
 // --- Memoized Orbiting Skill Component ---
 const OrbitingSkill = memo(({ config, angle }: OrbitingSkillProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const { orbitRadius, size, iconType, label } = config;
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const x = Math.cos(angle) * orbitRadius;
   const y = Math.sin(angle) * orbitRadius;
-
-  // Don't render until mounted to avoid hydration mismatch
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <div
